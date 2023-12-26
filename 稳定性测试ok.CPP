@@ -1,4 +1,4 @@
-/*  test.c -- ²âÊÔ¼¸ÖÖÅÅĞòËã·¨ÎÈ¶¨ĞÔ   */  
+/*  test.c -- æµ‹è¯•å‡ ç§æ’åºç®—æ³•ç¨³å®šæ€§   */  
 #include <stdio.h>  
 #include <stdlib.h>  
 #include <time.h>    
@@ -6,16 +6,16 @@
 #define SIZE (30)  
 
 int flag = 0;  
-typedef struct    //¶¨Òå½á¹¹Ìå
+typedef struct    //å®šä¹‰ç»“æ„ä½“
 {  
     int key ;  
     int logo ;  
 } Item ;  
   
 int main (void) ;  
-int initialize (Item * const array, const int size) ;       //³õÊ¼»¯Êı×é
+int initialize (Item * const array, const int size) ;       //åˆå§‹åŒ–æ•°ç»„
 
-/*  ¸÷ÅÅĞòº¯ÊıµÄÉùÃ÷  */  
+/*  å„æ’åºå‡½æ•°çš„å£°æ˜  */  
 void insertionSort (Item * const array, const int size) ;  
 void binarySort(Item * const array, const int size);
 void shellSort (Item * const array, const int size) ;  
@@ -26,36 +26,36 @@ void heapSort (Item * const array, int size) ;
 void mergeSort (Item * const array, const int left, const int right) ;  
  
 int test (const Item * const array, const int size) ;  
-void printArray (const Item * const array, const int size) ;     //ÓÃÓÚÊä³öÊı×é 
-void result(const char * name);                            //ÓÃÓÚÊä³ö²âÊÔ½á¹û
+void printArray (const Item * const array, const int size) ;     //ç”¨äºè¾“å‡ºæ•°ç»„ 
+void result(const char * name);                            //ç”¨äºè¾“å‡ºæµ‹è¯•ç»“æœ
   
-int main (void)      //Ö÷º¯Êı
+int main (void)      //ä¸»å‡½æ•°
 {  
     Item array[SIZE] ;  
     int size ;  
 	int choice; 
     size = SIZE ;  
-	printf("ÇëÑ¡ÔñÒª²âÊÔµÄÅÅĞòËã·¨£º\n");
+	printf("è¯·é€‰æ‹©è¦æµ‹è¯•çš„æ’åºç®—æ³•ï¼š\n");
 	printf("\n");
-	printf("1.Ö±½Ó²åÈëÅÅĞò(InsertionSort)\n");
-	printf("2.ÕÛ°ë²åÈëÅÅĞò(BinarySort)\n");
-	printf("3.Ï£¶ûÅÅĞò(ShellSort)\n");
-	printf("4.Ã°ÅİÅÅĞò(BubbleSort)\n");
-	printf("5.¿ìËÙÅÅĞò(QuickSort)\n");
-	printf("6.¼òµ¥Ñ¡ÔñÅÅĞò(SelectSort)\n");
-	printf("7.¶ÑÅÅĞò(HeapSort)\n");
-	printf("8.¹é²¢ÅÅĞò(MergeSort)\n");
-	printf("*.°´0ÍË³ö\n");
+	printf("1.ç›´æ¥æ’å…¥æ’åº(InsertionSort)\n");
+	printf("2.æŠ˜åŠæ’å…¥æ’åº(BinarySort)\n");
+	printf("3.å¸Œå°”æ’åº(ShellSort)\n");
+	printf("4.å†’æ³¡æ’åº(BubbleSort)\n");
+	printf("5.å¿«é€Ÿæ’åº(QuickSort)\n");
+	printf("6.ç®€å•é€‰æ‹©æ’åº(SelectSort)\n");
+	printf("7.å †æ’åº(HeapSort)\n");
+	printf("8.å½’å¹¶æ’åº(MergeSort)\n");
+	printf("*.æŒ‰0é€€å‡º\n");
 	printf("\n");
-l:	printf("ÊäÈëÄãµÄÑ¡Ôñ==>:");
+l:	printf("è¾“å…¥ä½ çš„é€‰æ‹©==>:");
 	scanf("%d",&choice);
 	printf("\n");
 	switch(choice)
 	{
 	   case 0:
-		   printf("ÍË³ö³É¹¦!\n");
+		   printf("é€€å‡ºæˆåŠŸ!\n");
 		   break;
-	   case 1://Ö±½Ó²åÈëÅÅĞò
+	   case 1://ç›´æ¥æ’å…¥æ’åº
 		   {
 				initialize (array, size) ;       
 				insertionSort (array, size) ;  
@@ -65,7 +65,7 @@ l:	printf("ÊäÈëÄãµÄÑ¡Ôñ==>:");
 				result("InsertionSort");
 				goto l;
 		   }
-       case 2://ÕÛ°ë²åÈëÅÅĞò
+	   case 2://æŠ˜åŠæ’å…¥æ’åº
 		   {
 				initialize (array, size) ;       
 				binarySort (array, size) ;  
@@ -75,7 +75,7 @@ l:	printf("ÊäÈëÄãµÄÑ¡Ôñ==>:");
 				result("BinarySort");
 				goto l;
 		   }
-	   case 3://Ï£¶ûÅÅĞò
+	   case 3://å¸Œå°”æ’åº
 		   {
 				initialize (array, size) ;  
 				shellSort (array, size) ;  
@@ -85,7 +85,7 @@ l:	printf("ÊäÈëÄãµÄÑ¡Ôñ==>:");
 				result("ShellSort");
 				goto l;
 		   }
-	   case 4://Ã°ÅİÅÅĞò
+	   case 4://å†’æ³¡æ’åº
 		   {
 				initialize (array, size) ;  
 				bubbleSort (array, size) ; 
@@ -95,7 +95,7 @@ l:	printf("ÊäÈëÄãµÄÑ¡Ôñ==>:");
 				result("BubbleSort");
 				goto l;
 		   }
-	   case 5://¿ìËÙÅÅĞò
+	   case 5://å¿«é€Ÿæ’åº
 		   {
 				initialize (array, size) ;  
 				quickSort (array, 0, size-1) ;
@@ -105,7 +105,7 @@ l:	printf("ÊäÈëÄãµÄÑ¡Ôñ==>:");
 				result("QuickSort");
 				goto l;
 		   }  
-	   case 6://¼òµ¥Ñ¡ÔñÅÅĞò
+	   case 6://ç®€å•é€‰æ‹©æ’åº
 		   {
 				initialize (array, size) ;  
 				selectSort (array, size) ;  
@@ -115,7 +115,7 @@ l:	printf("ÊäÈëÄãµÄÑ¡Ôñ==>:");
 				result("SelectSort");
 				goto l;
 		   }
-	   case 7://¶ÑÅÅĞò 
+	   case 7://å †æ’åº 
 		   {
 				initialize (array, size) ;  
 				heapSort (array, size) ;  
@@ -125,7 +125,7 @@ l:	printf("ÊäÈëÄãµÄÑ¡Ôñ==>:");
 				result( "HeapSort");
 				goto l;
 		   }
-	   case 8://¶şÂ·¹é²¢ÅÅĞò 
+	   case 8://äºŒè·¯å½’å¹¶æ’åº 
 		   {
 				initialize (array, size) ;  
 				mergeSort (array, 0, size-1) ;   
@@ -137,7 +137,7 @@ l:	printf("ÊäÈëÄãµÄÑ¡Ôñ==>:");
 		   }
 	   
 	   default:
-		   printf("Ö¸ÁîÓĞÎó£¬ÇëÖØĞÂÊäÈë£¡\n");
+		   printf("æŒ‡ä»¤æœ‰è¯¯ï¼Œè¯·é‡æ–°è¾“å…¥ï¼\n");
 		   printf("\n");
 		   goto l;
 	}
@@ -163,11 +163,11 @@ int initialize (Item * const array, const int size)
     for (i = size - 1; i >= 0; i--)  
         array[i].logo = temp[array[i].key]-- ;
 	printArray(array,size);
-    free (temp) ;      //ÊÍ·ÅtempÕ¼ÓÃµÄÄÚ´æ¿Õ¼ä
+    free (temp) ;      //é‡Šæ”¾tempå ç”¨çš„å†…å­˜ç©ºé—´
   
     return 1 ;  
 }  
-//Ö±½Ó²åÈëÅÅĞò
+//ç›´æ¥æ’å…¥æ’åº
 void insertionSort (Item * const array, const int size)  
 {  
     Item temp ;  
@@ -186,7 +186,7 @@ void insertionSort (Item * const array, const int size)
         array[j] = temp ;  
     }  
 }  
-//ÕÛ°ë²åÈëÅÅĞò
+//æŠ˜åŠæ’å…¥æ’åº
 void binarySort(Item * const array, const int size) 
 {
     int low, mid, high;
@@ -209,7 +209,7 @@ void binarySort(Item * const array, const int size)
 		array[low] = temp;
      }
 }
-//Ï£¶ûÅÅĞò
+//å¸Œå°”æ’åº
 void shellSort (Item * const array, const int size)  
 {  
     Item temp ;  
@@ -231,7 +231,7 @@ void shellSort (Item * const array, const int size)
         }  
     }  
 }  
-//¶ÑÅÅĞò 
+//å †æ’åº 
 void heapSort (Item * const array, int size)  
 {  
     Item temp ;  
@@ -255,7 +255,7 @@ void heapSort (Item * const array, int size)
     }  
     while (size > 1)  
     {  
-        /* ½»»»   */  
+        /* äº¤æ¢   */  
         temp = array[0] ;  
         array[0] = array[size - 1] ;  
         array[size - 1] = temp ;  
@@ -273,7 +273,7 @@ void heapSort (Item * const array, int size)
         array[j] = temp ;  
     }  
 }  
-//¹é²¢ÅÅĞò  
+//å½’å¹¶æ’åº  
 void mergeSort (Item * const array, const int left, const int right)  
 {  
     Item * temp ;  
@@ -319,7 +319,7 @@ void mergeSort (Item * const array, const int left, const int right)
         free (temp) ;  
     }  
 }   
-//¿ìËÙÅÅĞò  
+//å¿«é€Ÿæ’åº  
 void quickSort (Item * const array, int left, const int right)  
 {  
     Item temp ;  
@@ -352,7 +352,7 @@ void quickSort (Item * const array, int left, const int right)
         left = i + 1 ;  
     }  
 }  
-//Ã°ÅİÅÅĞò  
+//å†’æ³¡æ’åº  
 void bubbleSort (Item * const array, int size)  
 {  
     Item temp ;  
@@ -374,7 +374,7 @@ void bubbleSort (Item * const array, int size)
         }  
     }  
 }  
-//¼òµ¥Ñ¡ÔñÅÅĞò          
+//ç®€å•é€‰æ‹©æ’åº          
 void selectSort (Item * const array, const int size)  
 {  
     Item temp ;  
